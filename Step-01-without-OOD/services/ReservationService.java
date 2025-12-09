@@ -7,6 +7,8 @@ public class ReservationService {
     private Notifier notifier = Notifier.EMAIL; //default Notifier
     private PaymentProcessor paymentProcessor = new PaymentProcessor();
 
+    this.notifier = notifier; // Constructor
+
     public void makeReservation(Reservation res, PaymentMethods paymentType, Notifier notifier){
         System.out.println("Processing reservation for " + res.customer.name);
 
@@ -33,13 +35,17 @@ public class ReservationService {
         System.out.println("Total: " + res.totalPrice());
         System.out.println("-------------------");
 
-       switch (this.notifier){
-           case EMAIL :
-           EmailSender emailSender = new EmailSender();
-           emailSender.sendEmail(res.customer.email, "Your reservation confirmed!");
-           break;
-           default:
-               System.out.println("There is no Message Provider");
-       }
+        switch (this.notifier){
+            case EMAIL:
+                EmailSender emailSender = new EmailSender();
+                emailSender.sendEmail(res.customer.email, "Your reservation confirmed!");
+                break;
+            case SMS:   // New case for SMS
+                SmsSender smsSender = new SmsSender();
+                smsSender.sendSmsMessage(res.customer.mobile, "Your reservation confirmed!");
+                break;
+            default:
+                System.out.println("There is no Message Provider");
+        }
     }
 }
