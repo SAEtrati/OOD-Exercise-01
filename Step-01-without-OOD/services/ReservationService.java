@@ -27,6 +27,11 @@ public class ReservationService {
             case CASH:
                 paymentProcessor.payByCash(res.totalPrice());
                 break;
+            case ONSITE:    // Case for on site payment
+                paymentProcessor.payOnSite(res.totalPrice());
+                break;
+            default:
+                System.out.println("Unknown payment method");
         }
 
         System.out.println("----- INVOICE -----");
