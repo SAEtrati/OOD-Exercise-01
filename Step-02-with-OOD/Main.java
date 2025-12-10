@@ -12,7 +12,7 @@ public class Main {
         Room room = new LuxuryRoom("203", 150);
         Reservation res = new Reservation(room, customer, 2);
 
-        ReservationService service = new ReservationService();
-        service.makeReservation(res, PaymentMethods.PAYPAL, Notifier.EMAIL);
+        ReservationService service = new ReservationService(paymentProcessor, messageSender);
+        service.makeReservation(res);
     }
 }
