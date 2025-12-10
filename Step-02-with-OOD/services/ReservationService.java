@@ -28,10 +28,7 @@ public class ReservationService {
         System.out.println("Total: " + res.totalPrice());
         System.out.println("-------------------");
 
-        messageSender.send(
-        res.customer.email,
-        "Your reservation confirmed!"
-        );
+        messageSender.send(res.customer.email, "Your reservation confirmed!");
 
     }
 }
