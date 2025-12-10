@@ -12,23 +12,18 @@ public class ReservationService {
     this.messageSender = messageSender;
     }
 
-    public void makeReservation(Reservation res){
+    public void makeReservation(Reservation res) {
         System.out.println("Processing reservation for " + res.customer.name);
 
-        if(res.customer.city.equals("Paris")){
-            System.out.println("Apply city discount for Paris!");
-            res.room.price *= 0.9;
-        }
+        res.applyCityDiscount();
 
         paymentProcessor.pay(res.totalPrice());
 
-        System.out.println("----- INVOICE -----");
-        System.out.println("hotel.Customer: " + res.customer.name);
-        System.out.println("hotel.Room: " + res.room.number + " (" + res.room.type + ")");
-        System.out.println("Total: " + res.totalPrice());
-        System.out.println("-------------------");
+        res.printInvoice();
 
-        messageSender.send(res.customer.email, "Your reservation confirmed!");
-
+        messageSender.send(
+                res.customer.email,
+                "Your reservation confirmed!"
+        );
     }
 }
