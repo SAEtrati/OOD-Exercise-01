@@ -1,5 +1,5 @@
 package services;
 
 public interface MessageSender {
-    void send(String to, String message);
+    void send(models.Customer customer, String message);
 }

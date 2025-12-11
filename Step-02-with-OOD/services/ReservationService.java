@@ -21,9 +21,6 @@ public class ReservationService {
 
         res.printInvoice();
 
-        messageSender.send(
-                res.customer.email,
-                "Your reservation confirmed!"
-        );
+        messageSender.send(res.customer,"Your reservation confirmed!");
     }
 }

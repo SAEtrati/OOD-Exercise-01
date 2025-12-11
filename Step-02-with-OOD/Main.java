@@ -12,6 +12,10 @@ public class Main {
         Room room = new LuxuryRoom("203", 150);
         Reservation res = new Reservation(room, customer, 2);
 
+        // Tests for new features
+        PaymentProcessor paymentProcessor = new OnSitePaymentProcessor();
+        MessageSender messageSender = new SMSSender();
+
         ReservationService service = new ReservationService(paymentProcessor, messageSender);
         service.makeReservation(res);
     }

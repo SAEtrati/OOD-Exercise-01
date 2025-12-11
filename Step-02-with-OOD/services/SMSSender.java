@@ -1,8 +1,8 @@
 package services;
 
-public class SmsSender implements MessageSender {
+public class SMSSender implements MessageSender {
     @Override
-    public void send(String to, String message) {
-        System.out.println("Sending SMS to " + to + ": " + message);
+    public void send(models.Customer customer, String message) {
+        System.out.println("Sending SMS to " + customer.mobile + ": " + message);
     }
 }
