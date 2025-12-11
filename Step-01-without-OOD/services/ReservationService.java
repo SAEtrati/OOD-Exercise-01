@@ -7,9 +7,8 @@ public class ReservationService {
     private Notifier notifier = Notifier.EMAIL; //default Notifier
     private PaymentProcessor paymentProcessor = new PaymentProcessor();
 
-    this.notifier = notifier; // Constructor
-
     public void makeReservation(Reservation res, PaymentMethods paymentType, Notifier notifier){
+        this.notifier = notifier; // Constructor
         System.out.println("Processing reservation for " + res.customer.name);
 
         if(res.customer.city.equals("Paris")){
